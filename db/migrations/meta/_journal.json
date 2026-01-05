@@ -8,6 +8,13 @@
       "when": 1766262206855,
       "tag": "0000_clean_beast",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767597262188,
+      "tag": "0001_flowery_skaar",
+      "breakpoints": true
     }
   ]
 }
