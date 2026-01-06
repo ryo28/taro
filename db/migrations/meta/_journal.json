@@ -15,6 +15,13 @@
       "when": 1767597262188,
       "tag": "0001_flowery_skaar",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767693589115,
+      "tag": "0002_swift_taskmaster",
+      "breakpoints": true
     }
   ]
 }

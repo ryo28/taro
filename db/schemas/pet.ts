@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import { users } from "./auth";
 
 //ペットの種類をenumで定義 enumとは列挙型のことで、特定の値の集合を定義するために使われるデータ型　
-export const petTypeEnum = pgEnum("pet_type", ["犬", "猫"]);
+export const petTypeEnum = pgEnum("pet_type", ["dog", "cat"]);
 
 //petsテーブルの定義
 export const pets = pgTable("pets", {
