@@ -4,11 +4,11 @@ import { User } from "@/types/user";
 
 export function UserCard({ user }: { user: User }) {
 	return (
-		<Card className="w-80 h-48 max-w-sm mx-auto">
+		<Card className="max-w-sm mx-auto">
 			<CardHeader>
-				<div className="flex items-center gap-4">
-					<Avatar>
-						<AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+				<div className="flex flex-col items-center gap-4 p-6">
+					<Avatar className="w-16 h-16 border">
+						<AvatarImage src={`https://api.dicebear.com/7.x/micah/svg?seed=${user.id}`} alt={user.name} />
 					</Avatar>
 					<div>
 						<h1 className="text-xl font-semibold">{user.name}</h1>
