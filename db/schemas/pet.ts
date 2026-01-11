@@ -3,8 +3,9 @@ import { integer, pgEnum, pgTable, text } from "drizzle-orm/pg-core";
 import { nanoid } from "nanoid";
 import { users } from "./auth";
 
+export const petType = ["dog", "cat"] as const;
 //ペットの種類をenumで定義 enumとは列挙型のことで、特定の値の集合を定義するために使われるデータ型　
-export const petTypeEnum = pgEnum("pet_type", ["dog", "cat"]);
+export const petTypeEnum = pgEnum("pet_type", petType);
 
 //petsテーブルの定義
 export const pets = pgTable("pets", {
