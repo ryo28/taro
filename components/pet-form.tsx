@@ -108,8 +108,8 @@ export function PetForm() {
                                 <Input
                                     autoComplete="off"// ブラウザの自動補完をオフにする
                                     type="number"
-                                    min="0"
-                                    max="100"
+                                    min="0"// テキストボックスに入力できる最小値
+                                    max="100"// テキストボックスに入力できる最大値
                                     placeholder="50"
                                     {...field}
                                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
