@@ -112,7 +112,7 @@ export function PetForm() {
                                     max="100"// テキストボックスに入力できる最大値
                                     placeholder="50"
                                     {...field}
-                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    onChange={(e) => field.onChange(Number(e.target.value))}
                                 />
                             </FormControl>
                             <FormDescription>
