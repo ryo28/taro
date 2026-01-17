@@ -23,7 +23,7 @@ export async function createPet(formData: PetFormData) {
     await db.insert(pets).values({ ...data, ownerId });
 }
 
-export async function updatePet(formData: PetFormData, id: string) {
+export async function updatePet(id: string, formData: PetFormData) {
 
     const data = petFormSchema.parse(formData);
     const session = await verifySession();

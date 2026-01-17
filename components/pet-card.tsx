@@ -1,6 +1,8 @@
 import { Pet, PetType } from "@/types/pet";
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import Link from "next/link";
 //親からデータを受け取るので単体テスト可能、内部でデータ取得はしない
 export function PetCard({ pet }: { pet: Pet }) {
     //user-card.tsxを参考に実装するpet.tsからimportした型を使う
@@ -43,6 +45,13 @@ export function PetCard({ pet }: { pet: Pet }) {
                     </div>
                 </div>
             </CardContent>
+            <CardFooter>
+                {/*本来はbuttonの中にaタグは入れられないので asChildを使うことでButtonのスタイルを維持したままLinkコンポーネントをラップできる */}
+                <Button asChild>
+                    {/* 動的ルートなのでユーザーの動きに応じてURLが変わる */}
+                    <Link href={`/pets/${pet.id}`}>編集</Link>
+                </Button>
+            </CardFooter>
         </Card>
     );
 
