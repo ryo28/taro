@@ -33,6 +33,7 @@ export function PetCard({ pet }: { pet: Pet }) {
                     </div>
                     <div className="bg-muted relative h-2 w-full overflow-hidden rounded-full">
                         <div
+                            role="progressbar"
                             className={cn(
                                 "h-full transition-all",
                                 getHpColor(pet.hp)
