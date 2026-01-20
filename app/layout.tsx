@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import { baseUrl } from "@/lib/base-url";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +37,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        <Toaster />
+       <NuqsAdapter>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster />
+       </NuqsAdapter>
       </body>
     </html>
   );
