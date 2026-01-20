@@ -1,6 +1,21 @@
+'use client';
+
 import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { LogOut, PawPrint, User } from 'lucide-react';
 
 export default function Header() {
+  const router = useRouter();
+  //authClient からセッション情報を取得、authClient は better-auth を使用して構築されています
+  const { data: session } = authClient.useSession();
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push('/login');
+  };
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-gray-200/50 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -11,19 +26,33 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* マイページへのリンク */}
-        <nav>
-          <Link 
-            href="/mypage" 
-            className="px-6 py-2.5 rounded-full bg-linear-to-r from-blue-500 to-purple-500 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-blue-600 hover:to-purple-600 flex items-center gap-2"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-            </svg>
-            マイページ
-          </Link>
+        {/* ナビゲーション */}
+        <nav className="flex items-center gap-3">
+          <Button variant="outline" size="default" asChild>
+            <Link href="/pets">
+              <PawPrint className="h-4 w-4" />
+              ペット一覧
+            </Link>
+          </Button>
+          {/*ログイン状態のときに表示 */}
+          {session?.user &&
+            <>
+              <Button variant="default" size="default" asChild>
+                <Link href="/mypage">
+                  <User className="h-4 w-4" />
+                  マイページ
+                </Link>
+              </Button>
+
+              <Button variant="destructive" size="default" onClick={handleLogout}>
+                <LogOut className="h-4 w-4" />
+                ログアウト
+              </Button>
+            </>
+          }
+
         </nav>
       </div>
-    </header>
+    </header >
   );
 }

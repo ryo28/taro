@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSessionCookie } from "better-auth/cookies";
 
 //見せていいページを許可制にするのが一般的です
-const publicRoutes = ["/login","register","/"];
+const publicRoutes = ["/login","register","/","/pets"];//公開ルートのリスト
 
 export async function proxy(request: NextRequest) {
     const sessionCookie = getSessionCookie(request);
